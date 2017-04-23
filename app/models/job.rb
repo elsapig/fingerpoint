@@ -9,6 +9,11 @@ class Job < ApplicationRecord
    self.save
  end
 
+ scope :published, -> { where (is_hidden: false) }
+ end
+ 
+ scope :recent, -> { order ('created_at DESC') }
+ end
 
   validates :title, presence: true
   validates :wage_upper_bound, presence: true
